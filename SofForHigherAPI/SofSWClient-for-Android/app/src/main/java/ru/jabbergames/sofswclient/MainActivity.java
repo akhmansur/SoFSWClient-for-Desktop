@@ -70,6 +70,7 @@ public class MainActivity extends FragmentActivity implements onSomeEventListene
         setContentView(R.layout.activity_main);
         if(Utils.flag){
             SendCom("getcomms");
+            SendCom("getmappoints");
         }
         final TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
 
@@ -90,8 +91,6 @@ public class MainActivity extends FragmentActivity implements onSomeEventListene
         ViewPager pager = (ViewPager)findViewById(R.id.viewpager);
         pager.setAdapter(pageAdapter);
         pager.setOffscreenPageLimit(4);
-        SendCom("getmappoints");
-        SendCom("0");
         if (mTimer != null) {
             mTimer.cancel();
         }
@@ -99,6 +98,7 @@ public class MainActivity extends FragmentActivity implements onSomeEventListene
         mMyTimerTask = new MyTimerTask();
 
         mTimer.schedule(mMyTimerTask, 1000, 1000);
+
     }
 
     class MyTimerTask extends TimerTask {

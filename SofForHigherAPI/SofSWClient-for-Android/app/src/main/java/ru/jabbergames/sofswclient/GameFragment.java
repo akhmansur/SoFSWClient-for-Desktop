@@ -162,14 +162,17 @@ public class GameFragment extends Fragment {
                     View.OnClickListener oclBtnCmdS = new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            EditText mCmdText = (EditText) v.findViewById(STextEditID);
-                            String scom = mCmdText.getText().toString();
-                            if (scom == "") { scom = "0"; }
-                            someEventListenerGm.SendCom(scom);
-                            someEventListenerGm.addLog(scom);
-                            mCmdText.setText("");
-                            btnCont.setOnClickListener(oclBtnCont);
+                                EditText mCmdText = (EditText) v.findViewById(STextEditID);
+                                String scom = mCmdText.getText().toString();
+                                if (scom == "") {
+                                    scom = "0";
+                                }
+                                someEventListenerGm.SendCom(scom);
+                                someEventListenerGm.addLog(scom);
+                                mCmdText.setText("");
+                                btnCont.setOnClickListener(oclBtnCont);
                         }
+                        ;
                     };
                     // присвоим обработчик кнопке
                     btnCont.setOnClickListener(oclBtnCmdS);
