@@ -90,6 +90,8 @@ public class MainActivity extends FragmentActivity implements onSomeEventListene
         ViewPager pager = (ViewPager)findViewById(R.id.viewpager);
         pager.setAdapter(pageAdapter);
         pager.setOffscreenPageLimit(4);
+        SendCom("getmappoints");
+        SendCom("0");
         if (mTimer != null) {
             mTimer.cancel();
         }
@@ -100,8 +102,6 @@ public class MainActivity extends FragmentActivity implements onSomeEventListene
     }
 
     class MyTimerTask extends TimerTask {
-        View vs;
-        public void setView(View v){vs=v;}
         @Override
         public void run() {
             runOnUiThread(new Runnable() {
