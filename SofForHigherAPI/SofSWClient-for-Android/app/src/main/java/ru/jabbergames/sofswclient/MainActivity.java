@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -14,6 +15,7 @@ import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -41,10 +43,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import ru.jabbergames.sofswclient.GameFragment.onSomeEventListenerGm;
+
 import ru.jabbergames.sofswclient.ChatFragment.onSomeEventListenerCh;
-import ru.jabbergames.sofswclient.CommsFragment.onSomeEventListenerCom;
 import ru.jabbergames.sofswclient.CmdFragment.onSomeEventListenerCmd;
+import ru.jabbergames.sofswclient.CommsFragment.onSomeEventListenerCom;
+import ru.jabbergames.sofswclient.GameFragment.onSomeEventListenerGm;
 public class MainActivity extends FragmentActivity implements onSomeEventListenerCh,onSomeEventListenerGm,onSomeEventListenerCom,onSomeEventListenerCmd {
 
     private String deviceId;
@@ -90,6 +93,8 @@ public class MainActivity extends FragmentActivity implements onSomeEventListene
         cmdFr=(CmdFragment)fragments.get(3);
         pageAdapter = new MyPageAdapter(getSupportFragmentManager(), fragments);
         ViewPager pager = (ViewPager)findViewById(R.id.viewpager);
+        if(Build.VERSION.SDK_INT>Build.VERSION_CODES.GINGERBREAD_MR1){
+        pager.setPageTransformer(true,new ZoomOutPageTransformer());}
         pager.setAdapter(pageAdapter);
         pager.setOffscreenPageLimit(4);
         if (mTimer != null) {

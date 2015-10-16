@@ -25,7 +25,7 @@ public class ChatFragment extends Fragment {
         public void addLog(String s);
         public void SendCom(String comstr);
     }
-
+    View vc;
     onSomeEventListenerCh someEventListener;
     @Override
     public void onAttach(Activity activity) {
@@ -48,6 +48,7 @@ public class ChatFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_chat, container, false);
+        vc=v;
         someEventListener.SendCom("chatmess !chroom? descr");
         //addLog("chatmess !chroom? descr");
         LinearLayout ll = (LinearLayout) v.findViewById(R.id.chatContent);
@@ -57,7 +58,7 @@ public class ChatFragment extends Fragment {
         View.OnClickListener oclBtnCmd = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LinearLayout ll = (LinearLayout) v.findViewById(R.id.chatContent);
+                LinearLayout ll = (LinearLayout) vc.findViewById(R.id.chatContent);
                 ll.removeAllViewsInLayout();
                 someEventListener.SendCom("chatmess !chroom? list");
                 someEventListener.addLog("chatmess !chroom? list");
@@ -70,7 +71,7 @@ public class ChatFragment extends Fragment {
         View.OnClickListener oclCBtnCmd = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText et = (EditText) v.findViewById(R.id.chatText);
+                EditText et = (EditText) vc.findViewById(R.id.chatText);
                 if (et.getText().length() > 0) {
                     someEventListener.SendCom("chatmess " + nk + et.getText().toString());
                     someEventListener.addLog("chatmess " + nk + et.getText().toString());
@@ -106,7 +107,7 @@ public class ChatFragment extends Fragment {
                     String com = (String) v.getTag();
                     someEventListener.SendCom(com);
                     someEventListener.addLog(com);
-                    LinearLayout ll = (LinearLayout) v.findViewById(R.id.chatContent);
+                    LinearLayout ll = (LinearLayout) vc.findViewById(R.id.chatContent);
                     ll.removeAllViewsInLayout();
                 }
             };
@@ -132,7 +133,7 @@ public class ChatFragment extends Fragment {
                     View.OnClickListener oclBtnGhbtn = new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            LinearLayout ll = (LinearLayout) v.findViewById(R.id.chatContent);
+                            LinearLayout ll = (LinearLayout) vc.findViewById(R.id.chatContent);
                             TextView tv = new TextView(getActivity());
                             tv.setText("=================");
                             tv.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -230,8 +231,7 @@ public class ChatFragment extends Fragment {
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if (getView() != null) {
-                    TextView tv = (TextView) getView().findViewById(R.id.chatToTextView);
+                    TextView tv = (TextView) vc.findViewById(R.id.chatToTextView);
                     switch (item.getItemId()) {
                         case R.id.menu1:
                             String t = tv.getText().toString();
@@ -255,15 +255,15 @@ public class ChatFragment extends Fragment {
                             return true;
                         case R.id.menu5:
                             tv.setText("");
-                            EditText et = (EditText) getView().findViewById(R.id.chatText);
+                            EditText et = (EditText) vc.findViewById(R.id.chatText);
                             et.setText("");
                             nk = "";
                             return true;
                         default:
                             return false;
                     }
-                }else return false;
-            }
+                }
+
         });
 
         popupMenu.setOnDismissListener(new PopupMenu.OnDismissListener() {
