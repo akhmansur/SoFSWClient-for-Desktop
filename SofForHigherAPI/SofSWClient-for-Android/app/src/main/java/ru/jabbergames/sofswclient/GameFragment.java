@@ -49,6 +49,7 @@ public class GameFragment extends Fragment {
     ImageButton btnGoNorth;
     ImageButton btnGoWest;
     ImageButton btnCont;
+    View vc;
     private boolean frstTstShw=true;
     private boolean uot;
     View.OnClickListener oclBtnCont = new View.OnClickListener() {
@@ -139,6 +140,7 @@ public class GameFragment extends Fragment {
     }
 
     protected void AddButG(String kay, String txt,View v) {
+        vc=v;
         if (txt != "") {
             LinearLayout ll = (LinearLayout) v.findViewById(R.id.GameLinearLayout);
             switch (kay)
@@ -162,7 +164,7 @@ public class GameFragment extends Fragment {
                     View.OnClickListener oclBtnCmdS = new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                                EditText mCmdText = (EditText) v.findViewById(STextEditID);
+                                EditText mCmdText = (EditText) vc.findViewById(STextEditID);
                                 String scom = mCmdText.getText().toString();
                                 if (scom == "") {
                                     scom = "0";

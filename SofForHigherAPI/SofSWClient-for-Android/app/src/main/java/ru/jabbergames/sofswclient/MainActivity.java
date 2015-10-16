@@ -71,6 +71,7 @@ public class MainActivity extends FragmentActivity implements onSomeEventListene
         if(Utils.flag){
             SendCom("getcomms");
             SendCom("getmappoints");
+            SendCom("0");
         }
         final TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
 
