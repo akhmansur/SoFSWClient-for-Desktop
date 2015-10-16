@@ -13,6 +13,7 @@ public class CommsFragment extends Fragment {
     public interface onSomeEventListenerCom {
         public void addLog(String s);
         public void SendCom(String comstr);
+        public void setCurrentIt(int i);
     }
     public static final String EXTRA_MESSAGE = "EXTRA_MESSAGE";
     onSomeEventListenerCom someEventListener;
@@ -58,7 +59,7 @@ public class CommsFragment extends Fragment {
                         String com = (String) v.getTag();
                         someEventListener.SendCom(com);
                         someEventListener.addLog(com);
-                        //tabHost.setCurrentTabByTag(tabTags[0]);
+                        someEventListener.setCurrentIt(0);
                     }
                 };
 

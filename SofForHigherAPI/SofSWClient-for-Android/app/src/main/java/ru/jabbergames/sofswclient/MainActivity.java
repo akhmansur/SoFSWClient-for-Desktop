@@ -65,7 +65,7 @@ public class MainActivity extends FragmentActivity implements onSomeEventListene
     CommsFragment commsFr;
     CmdFragment cmdFr;
     MyPageAdapter pageAdapter;
-
+    ViewPager ppg;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +97,7 @@ public class MainActivity extends FragmentActivity implements onSomeEventListene
         pager.setPageTransformer(true,new ZoomOutPageTransformer());}
         pager.setAdapter(pageAdapter);
         pager.setOffscreenPageLimit(4);
+        ppg=pager;
         if (mTimer != null) {
             mTimer.cancel();
         }
@@ -107,6 +108,9 @@ public class MainActivity extends FragmentActivity implements onSomeEventListene
 
     }
 
+    public void setCurrentIt(int i) {
+        ppg.setCurrentItem(i);
+    }
     class MyTimerTask extends TimerTask {
         @Override
         public void run() {
