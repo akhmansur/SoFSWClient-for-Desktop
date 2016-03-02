@@ -17,6 +17,7 @@
      <file>images/d1011_l.png</file>
      <file>images/d1100_l.png</file>
      <file>images/d1101_l.png</file>
+     <file>images/d1110_l.png</file>
      <file>images/d1111_l.png</file>
      <file>images/d0000_d.png</file>
      <file>images/d0001_d.png</file>
@@ -32,12 +33,15 @@
      <file>images/d1011_d.png</file>
      <file>images/d1100_d.png</file>
      <file>images/d1101_d.png</file>
+     <file>images/d1110_d.png</file>
      <file>images/d1111_d.png</file>
      <file>images/n.png</file>
      <file>images/e.png</file>
      <file>images/s.png</file>
      <file>images/w.png</file>
      <file>images/w.png</file>
+     <file>images/s00_l.png</file>
+     <file>images/s00_d.png</file>
      <file>images/s01_l.png</file>
      <file>images/s02_l.png</file>
      <file>images/s03_l.png</file>
