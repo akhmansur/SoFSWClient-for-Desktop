@@ -146,7 +146,6 @@ void MainWindow::timeOut(){
 void MainWindow::sendPost(QString comm)
 {
     QMap<QString,QString> data;
-    //data.insert("i","ffffffff-9404-f152-ae82-42366efe6b62");
     data.insert("i",*deviceId);
     qDebug()<<*deviceId;
     data.insert("j",comm);
